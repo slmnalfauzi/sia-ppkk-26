@@ -141,3 +141,150 @@
         @apply bg-background text-foreground;
     }
 }
+
+@theme {
+    --color-tertiary-fixed-dim: #fdbc13;
+    --color-surface-container-highest: #d9e3f6;
+    --color-surface-container: #e6eeff;
+    --color-tertiary-fixed: #ffdea3;
+    --color-on-primary-fixed: #002115;
+    --color-inverse-surface: #27313f;
+    --color-tertiary: #4c3600;
+    --color-on-primary: #ffffff;
+    --color-secondary-fixed-dim: #6fd7d6;
+    --color-outline: #6f7973;
+    --color-on-error: #ffffff;
+    --color-on-surface: #121c2a;
+    --color-tertiary-container: #684b00;
+    --color-on-secondary: #ffffff;
+    --color-surface-tint: #1b6b50;
+    --color-error-container: #ffdad6;
+    --color-surface-container-low: #eff4ff;
+    --color-on-surface-variant: #3f4943;
+    --color-error: #ba1a1a;
+    --color-secondary: #006a6a;
+    --color-on-tertiary-container: #f9b80b;
+    --color-surface-variant: #d9e3f6;
+    --color-on-secondary-fixed: #002020;
+    --color-on-error-container: #93000a;
+    --color-on-secondary-fixed-variant: #004f4f;
+    --color-inverse-primary: #8bd6b4;
+    --color-on-primary-container: #87d2b1;
+    --color-surface-container-lowest: #ffffff;
+    --color-inverse-on-surface: #eaf1ff;
+    --color-on-secondary-container: #007070;
+    --color-on-primary-fixed-variant: #00513a;
+    --color-background: #f8f9ff;
+    --color-surface-dim: #d0dbed;
+    --color-outline-variant: #bec9c2;
+    --color-on-tertiary-fixed: #261900;
+    --color-on-background: #121c2a;
+    --color-secondary-fixed: #8cf3f3;
+    --color-secondary-container: #8cf3f3;
+    --color-primary-fixed-dim: #8bd6b4;
+    --color-on-tertiary: #ffffff;
+    --color-surface-bright: #f8f9ff;
+    --color-primary: #00422f;
+    --color-primary-fixed: #a6f2d0;
+    --color-surface-container-high: #dee9fc;
+    --color-primary-container: #005c42;
+    --color-on-tertiary-fixed-variant: #5d4200;
+    --color-surface: #f8f9ff;
+
+    --spacing-gutter: 24px;
+    --spacing-margin-tablet: 24px;
+    --spacing-stack-sm: 8px;
+    --spacing-margin-desktop: 32px;
+    --spacing-unit: 4px;
+    --spacing-stack-lg: 24px;
+    --spacing-margin-mobile: 16px;
+    --spacing-container-max: 1440px;
+    --spacing-stack-md: 16px;
+
+    --font-title-md: "Inter", sans-serif;
+    --font-tabular-nums: "Inter", sans-serif;
+    --font-display-lg: "Inter", sans-serif;
+    --font-headline-md: "Inter", sans-serif;
+    --font-headline-lg-mobile: "Inter", sans-serif;
+    --font-headline-lg: "Inter", sans-serif;
+    --font-title-lg: "Inter", sans-serif;
+    --font-label-md: "Inter", sans-serif;
+    --font-body-md: "Inter", sans-serif;
+    --font-body-lg: "Inter", sans-serif;
+
+    --text-title-md: 16px;
+    --text-title-md--line-height: 24px;
+    --text-title-md--font-weight: 600;
+
+    --text-tabular-nums: 14px;
+    --text-tabular-nums--line-height: 20px;
+    --text-tabular-nums--font-weight: 400;
+
+    --text-display-lg: 48px;
+    --text-display-lg--line-height: 56px;
+    --text-display-lg--letter-spacing: -0.02em;
+    --text-display-lg--font-weight: 700;
+
+    --text-headline-md: 24px;
+    --text-headline-md--line-height: 32px;
+    --text-headline-md--font-weight: 600;
+
+    --text-headline-lg-mobile: 24px;
+    --text-headline-lg-mobile--line-height: 32px;
+    --text-headline-lg-mobile--font-weight: 600;
+
+    --text-headline-lg: 32px;
+    --text-headline-lg--line-height: 40px;
+    --text-headline-lg--letter-spacing: -0.01em;
+    --text-headline-lg--font-weight: 600;
+
+    --text-title-lg: 20px;
+    --text-title-lg--line-height: 28px;
+    --text-title-lg--font-weight: 600;
+
+    --text-label-md: 12px;
+    --text-label-md--line-height: 16px;
+    --text-label-md--letter-spacing: 0.05em;
+    --text-label-md--font-weight: 500;
+
+    --text-body-md: 14px;
+    --text-body-md--line-height: 20px;
+    --text-body-md--font-weight: 400;
+
+    --text-body-lg: 16px;
+    --text-body-lg--line-height: 24px;
+    --text-body-lg--font-weight: 400;
+}
+
+@utility glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@utility text-gradient-primary {
+    background: linear-gradient(135deg, #00422f 0%, #006a6a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@utility scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@utility pattern-dots {
+    background-image: radial-gradient(#bec9c2 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+}
+
+@utility login-card {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 66, 47, 0.08);
+}

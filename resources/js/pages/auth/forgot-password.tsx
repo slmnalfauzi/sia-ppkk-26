@@ -1,69 +1,99 @@
-// Components
-import { Form, Head } from '@inertiajs/react';
-import { LoaderCircle } from 'lucide-react';
-import InputError from '@/components/input-error';
-import TextLink from '@/components/text-link';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Form, Head, Link } from '@inertiajs/react';
 import { login } from '@/routes';
 import { email } from '@/routes/password';
 
 export default function ForgotPassword({ status }: { status?: string }) {
     return (
         <>
-            <Head title="Forgot password" />
+            <Head title="Lupa Password" />
 
-            {status && (
-                <div className="mb-4 text-center text-sm font-medium text-green-600">
-                    {status}
+            <div className="min-h-screen flex items-center justify-center p-4 bg-background">
+                {/* Background Decorative Elements */}
+                <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+                    <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+                    <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
                 </div>
-            )}
 
-            <div className="space-y-6">
-                <Form {...email.form()}>
-                    {({ processing, errors }) => (
-                        <>
-                            <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
-                                <Input
-                                    id="email"
-                                    type="email"
-                                    name="email"
-                                    autoComplete="off"
-                                    autoFocus
-                                    placeholder="email@example.com"
-                                />
+                {/* Main Container */}
+                <main className="w-full max-w-[440px] animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    {/* Logo Area */}
+                    <div className="flex flex-col items-center mb-8">
+                        <div className="bg-white p-4 rounded-full shadow-sm mb-4 border border-outline-variant/30">
+                            <img alt="Logo UIN Sunan Kalijaga" className="h-16 w-auto object-contain" src="/images/logo_uin.png"/>
+                        </div>
+                        <h1 className="font-headline-md text-headline-md text-primary tracking-tight">Lupa Password</h1>
+                        <p className="font-body-md text-body-md text-on-surface-variant mt-1 text-center px-4">
+                            Masukkan email Anda dan kami akan mengirimkan tautan untuk mereset password.
+                        </p>
+                    </div>
 
-                                <InputError message={errors.email} />
-                            </div>
-
-                            <div className="my-6 flex items-center justify-start">
-                                <Button
-                                    className="w-full"
-                                    disabled={processing}
-                                    data-test="email-password-reset-link-button"
-                                >
-                                    {processing && (
-                                        <LoaderCircle className="h-4 w-4 animate-spin" />
-                                    )}
-                                    Email password reset link
-                                </Button>
-                            </div>
-                        </>
+                    {status && (
+                        <div className="mb-6 p-4 rounded-lg bg-primary-fixed/20 border border-primary-fixed text-center text-sm font-medium text-primary">
+                            {status}
+                        </div>
                     )}
-                </Form>
 
-                <div className="space-x-1 text-center text-sm text-muted-foreground">
-                    <span>Or, return to</span>
-                    <TextLink href={login()}>log in</TextLink>
-                </div>
+                    {/* Form Card */}
+                    <div className="bg-surface-container-lowest login-card rounded-xl p-8 md:p-10">
+                        <Form
+                            {...email.form()}
+                            className="space-y-6"
+                        >
+                            {({ processing, errors }) => (
+                                <>
+                                    {/* Email Input */}
+                                    <div className="space-y-2">
+                                        <label className="font-label-md text-label-md text-on-surface-variant block ml-1" htmlFor="email">Email address</label>
+                                        <div className="relative group">
+                                            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px] group-focus-within:text-primary transition-colors" style={{ fontVariationSettings: "'FILL' 1" }}>mail</span>
+                                            <input 
+                                                id="email" 
+                                                name="email" 
+                                                type="email" 
+                                                required 
+                                                autoFocus
+                                                autoComplete="email"
+                                                placeholder="Masukkan email Anda"
+                                                className={`w-full pl-10 pr-4 py-3 bg-white border ${errors.email ? 'border-error' : 'border-outline-variant'} rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md text-on-surface placeholder:text-outline/50`}
+                                            />
+                                        </div>
+                                        {errors.email && (
+                                            <p className="text-sm text-error mt-1 ml-1">{errors.email}</p>
+                                        )}
+                                    </div>
+
+                                    {/* Submit Button */}
+                                    <button 
+                                        type="submit"
+                                        disabled={processing}
+                                        className="w-full bg-primary hover:bg-primary-container text-white font-title-md py-4 rounded-lg shadow-sm active:scale-[0.98] transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+                                    >
+                                        {processing ? (
+                                            <>
+                                                <span className="animate-spin material-symbols-outlined">progress_activity</span> 
+                                                <span>Mengirim...</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>Kirim Link Reset</span>
+                                                <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">send</span>
+                                            </>
+                                        )}
+                                    </button>
+                                </>
+                            )}
+                        </Form>
+                    </div>
+
+                    {/* Back Link */}
+                    <div className="mt-8 text-center">
+                        <Link href={login()} className="inline-flex items-center gap-2 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">
+                            <span className="material-symbols-outlined text-[16px]">arrow_back</span>
+                            <span>Kembali ke Login</span>
+                        </Link>
+                    </div>
+                </main>
             </div>
         </>
     );
 }
-
-ForgotPassword.layout = {
-    title: 'Forgot password',
-    description: 'Enter your email to receive a password reset link',
-};
